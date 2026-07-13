@@ -1,9 +1,9 @@
 export const HighlightCard = ({ title, value, unit, children }) => (
-  <article className="flex h-51.25 flex-col items-center bg-[#1E213A] px-8 py-4 text-center 2xl:h-60">
-    <h3 className="text-xl font-medium text-[#E7E7EB]">{title}</h3>
-    <p className="mt-8 text-[60px] font-bold leading-none text-[#E7E7EB] 2xl:text-[64px]">
+  <article className="flex flex-col items-center bg-[#1E213A] px-6 py-8 text-center justify-center h-full">
+    <h3 className="text-lg font-medium text-[#E7E7EB]">{title}</h3>
+    <p className="mt-3 text-6xl font-bold leading-none text-[#E7E7EB]">
       {value}
-      <span className="text-4xl font-medium">{unit}</span>
+      <span className="text-2xl font-medium ml-1">{unit}</span>
     </p>
     {children}
   </article>

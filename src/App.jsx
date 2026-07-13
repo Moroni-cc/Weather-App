@@ -40,7 +40,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#100E1D] font-sans text-[#E7E7EB] md:flex">
+    <div className="h-screen w-screen flex flex-col md:flex-row bg-[#100E1D] font-sans text-[#E7E7EB] overflow-hidden">
 
       <Sidebar
         weather={weather}
@@ -52,42 +52,37 @@ function App() {
         unit={unit}
       />
 
-      <main className="flex-1 px-6 py-8 md:px-8 xl:px-10 2xl:px-24">
-        <div className="mx-auto max-w-210">
-          <UnitToggle unit={unit} onChange={setUnit} />
+      <main className="flex-1 h-screen flex flex-col px-6 py-4 md:px-12 xl:px-16 2xl:px-24 overflow-hidden">
+        <div className="mx-auto w-full max-w-210 h-full flex flex-col justify-between">
 
-          {error ? <p className="mb-4 text-[#FFEC65]">{error}</p> : null}
+          <div className="flex justify-end shrink-0">
+            <UnitToggle unit={unit} onChange={setUnit} />
+          </div>
 
-          <section className="grid grid-cols-2 justify-items-stretch gap-5 sm:grid-cols-3 lg:grid-cols-5 xl:gap-5 2xl:gap-6">
+          {error ? <p className="text-[#FFEC65] shrink-0">{error}</p> : null}
+
+          <section className="grid grid-cols-2 justify-items-stretch gap-3 sm:grid-cols-3 lg:grid-cols-5 shrink-0">
             {(dailyForecast.length ? dailyForecast : Array.from({ length: 5 })).map((day, index) => (
               <ForecastCard key={day?.dt ?? index} day={day} index={index} unit={unit} />
             ))}
           </section>
 
-          <section className="mt-8 md:mt-7">
-            <h2 className="text-2xl font-bold text-[#E7E7EB] md:text-3xl">Today's Highlights</h2>
-
-            <div className="mt-7 grid gap-7 lg:grid-cols-2 2xl:gap-8">
+          <section className="grow flex flex-col justify-center min-h-0">
+            <h2 className="text-xl font-bold text-[#E7E7EB] mb-4">Today's Highlights</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-full">
               <HighlightCard title="Wind status" value={windValue} unit={windUnit}>
-                <div className="mt-9 flex items-center gap-3 text-lg">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#6E707A]">
-                    <img src="/weatherapp/navigation.svg" alt="" className="h-5 w-5" />
+                <div className="mt-4 flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#6E707A]">
+                    <img src="/weatherapp/navigation.svg" alt="" className="h-4 w-4" />
                   </span>
                   {windDirection}
                 </div>
               </HighlightCard>
 
               <HighlightCard title="Humidity" value={humidity} unit="%">
-                <div className="mt-6 w-full max-w-71">
-                  <div className="flex justify-between text-xs font-bold text-[#A09FB1]">
-                    <span>0</span>
-                    <span>50</span>
-                    <span>100</span>
-                  </div>
-                  <div className="mt-1 h-2 rounded-full bg-[#E7E7EB]">
-                    <div className="h-2 rounded-full bg-[#FFEC65]" style={{ width: `${humidity}%` }} />
-                  </div>
-                  <p className="mt-1 text-right text-xs font-bold text-[#A09FB1]">%</p>
+                <div className="mt-4 w-full max-w-60">
+                  <div className="flex justify-between text-xs text-[#A09FB1]"><span>0</span><span>50</span><span>100</span></div>
+                  <div className="h-2 rounded-full bg-[#E7E7EB] mt-1"><div className="h-2 rounded-full bg-[#FFEC65]" style={{ width: `${humidity}%` }} /></div>
                 </div>
               </HighlightCard>
 
@@ -96,7 +91,7 @@ function App() {
             </div>
           </section>
 
-          <footer className="mt-7 text-center text-sm font-medium text-[#A09FB1]">
+          <footer className="text-center text-xs font-medium text-[#A09FB1] shrink-0 py-2">
             Created by <span className="font-bold">JoregeSosa</span> - devChallenges.io
           </footer>
         </div>
