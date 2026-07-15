@@ -92,7 +92,7 @@ function App() {
           </section>
 
           <footer className="text-center text-xs font-medium text-[#A09FB1] shrink-0 py-2">
-            Created by <span className="font-bold">JoregeSosa</span> - devChallenges.io
+            Created by <span className="font-bold">Moroni Capcha</span> - devChallenges.io
           </footer>
         </div>
       </main>
